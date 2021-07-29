@@ -2,8 +2,7 @@
 
 set -eo pipefail
 
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:ansible/ansible
-sudo apt-get install -y ansible
+# Install System Ansible version with python/pip
+python3 -m pip install --upgrade pip
+python3 -m pip install ansible-core
 

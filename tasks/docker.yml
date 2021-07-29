@@ -1,0 +1,50 @@
+# Instructions from https://docs.docker.com/engine/install/ubuntu/
+# - accessed on 29-07-2021
+
+- name: Purge old Docker versions
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+
+- name: Install Docker prerequisites
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+- name: Add Docker APT key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add Docker APT repository 
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+
+- name: Install Docker apt packages
+  apt:
+    update_cache: yes
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    
+- name: Install Docker-Compose script
+  pip:
+    name: docker-compose
+  become: yes
+
+- name: Add user to docker group
+  become: yes
+  user:
+    name: joel 
+    append: yes
+    groups: docker
+
