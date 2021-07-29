@@ -2,6 +2,7 @@
 
 ### 
 
+- [ ] Dotfiles here? or in existing repo (depends on a lot of this stuff) 
 - [ ] 'Bootstrap' script to download packages required by Ansible
     (ie: Ansible needs some packages present before it can manage packages with APT)
 - [ ] Packages installed
