@@ -1,0 +1,9 @@
+---
+- name: Copy sudoers config
+  become: true
+  copy:
+    content: "{{ sudoers_custom_config }}"
+    dest: /etc/sudoers.d/{{ user }}
+    mode: 0440
+    validate: 'visudo -cf %s'
+

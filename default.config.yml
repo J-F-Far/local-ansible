@@ -1,0 +1,8 @@
+---
+user: joel
+home: /home/{{ user }}
+
+configure_sudoers: false
+sudoers_custom_config: |
+  # Allow user to use sudo with no password.
+  {{ user }} ALL=(ALL) NOPASSWD: ALL
