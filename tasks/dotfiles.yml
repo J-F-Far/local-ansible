@@ -7,6 +7,15 @@
     accept_hostkey: true
   become: false
 
+- name: Create config directories
+  file:
+    state: directory
+    dest: "{{ home }}/.config/{{ item }}"
+  with_items:
+    - "nvim"
+    - "nvim/lua"
+    - "git"
+
 - name: Run install command for dotbot
   command:
     chdir: "{{ dotfiles_repo_local }}"

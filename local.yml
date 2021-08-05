@@ -4,12 +4,6 @@
   vars_files:
     - default.config.yml
 
-  pre_tasks:
-    - name: Update package repos
-      apt:
-        update_cache: yes
-      changed_when: false
-
   tasks:
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
@@ -22,7 +16,6 @@
     - import_tasks: tasks/neovim.yml
       when: configure_neovim
       tags: ['neovim']
-
 
     - include: tasks/packages.yml
       tags: ['packages']
