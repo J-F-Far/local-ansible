@@ -19,6 +19,12 @@
       when: configure_dotfiles
       tags: ['dotfiles']
 
+    - import_tasks: tasks/neovim.yml
+      when: configure_neovim
+      tags: ['neovim']
+
+
     - include: tasks/packages.yml
+      tags: ['packages']
     - include: tasks/docker.yml
       tags: [docker]

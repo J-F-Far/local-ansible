@@ -1,8 +1,9 @@
+---
 - name: Install apt packages
+  become: yes
   apt:
-    name:
-      - htop
-      - tmux
+    name: "{{ item}}"
+  with_items: "{{ apt_packages }}"
 
 - name: Install flatpak packages
   community.general.flatpak:

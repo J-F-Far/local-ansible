@@ -1,0 +1,29 @@
+---
+# Get latest features by building NeoVim from source
+- name: Checkout NeoVim source code
+  git:
+    repo: "{{ neovim_repo }}"
+    version: stable
+    force: no
+    update: "{{ neovim_update }}"
+    dest: "{{ home }}/Software/neovim"
+    accept_hostkey: "{{ neovim_accept_hostkey }}"
+  become: false
+
+- name: Build NeoVim with make
+  command:
+    chdir: "{{ home }}/Software/neovim"
+    cmd: "make -j4"
+
+- name: Install NeoVim
+  command:
+    chdir: "{{ home }}/Software/neovim"
+    cmd: "make install"
+  become: yes
+
+- name: Install vim-plug
+  get_url:
+    url: "{{ vimplug_url }}"
+    dest: "{{ home }}/.local/share/nvim/site/autoload"
+
+

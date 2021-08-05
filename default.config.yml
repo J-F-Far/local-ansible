@@ -11,3 +11,23 @@ configure_sudoers: false
 sudoers_custom_config: |
   # Allow user to use sudo with no password.
   {{ user }} ALL=(ALL) NOPASSWD: ALL
+
+# NeoVim and Vim-Plug
+configure_neovim: true
+neovim_repo: git@github.com:neovim/neovim.git
+neovim_accept_hostkey: true
+neovim_update: false
+vimplug_url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+apt_packages:
+  - autoconf
+  - automake
+  - cmake
+  - curl
+  - g++
+  - gettext
+  - libtool
+  - libtool-bin
+  - ninja-build
+  - pkg-config
+  - unzip
