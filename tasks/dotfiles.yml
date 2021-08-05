@@ -1,0 +1,13 @@
+---
+- name: clone dotfiles repo
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local }}"
+    version: "{{ dotfiles_version}}"
+    accept_hostkey: true
+  become: false
+
+- name: Run install command for dotbot
+  command:
+    chdir: "{{ dotfiles_repo_local }}"
+    cmd: "./install"

@@ -2,6 +2,11 @@
 user: joel
 home: /home/{{ user }}
 
+configure_dotfiles: true
+dotfiles_repo: git@github.com:J-F-Far/dotfiles.git
+dotfiles_repo_local: "{{ home }}/.dotfiles"
+dotfiles_version: master
+
 configure_sudoers: false
 sudoers_custom_config: |
   # Allow user to use sudo with no password.

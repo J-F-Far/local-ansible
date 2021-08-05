@@ -15,6 +15,10 @@
       when: configure_sudoers
       tags: ['sudoers']
 
+    - import_tasks: tasks/dotfiles.yml
+      when: configure_dotfiles
+      tags: ['dotfiles']
+
     - include: tasks/packages.yml
     - include: tasks/docker.yml
       tags: [docker]
