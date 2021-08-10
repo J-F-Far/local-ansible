@@ -3,8 +3,8 @@
 - name: Checkout NeoVim source code
   git:
     repo: "{{ neovim_repo }}"
-    version: stable
-    force: no
+    version: nightly
+    force: yes
     update: "{{ neovim_update }}"
     dest: "{{ home }}/Software/neovim"
     accept_hostkey: "{{ neovim_accept_hostkey }}"
@@ -13,12 +13,12 @@
 - name: Build NeoVim with make
   command:
     chdir: "{{ home }}/Software/neovim"
-    cmd: "make -j4"
+    cmd: "make --silent -j4"
 
 - name: Install NeoVim
   command:
     chdir: "{{ home }}/Software/neovim"
-    cmd: "make install"
+    cmd: "make --silent install"
   become: yes
 
 - name: Install vim-plug
@@ -26,4 +26,6 @@
     url: "{{ vimplug_url }}"
     dest: "{{ home }}/.local/share/nvim/site/autoload"
 
-
+- name: Run PlugInstall non-interactively
+  command:
+    cmd: "nvim --headless -c PlugInstall -c qa"

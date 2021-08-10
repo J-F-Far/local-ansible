@@ -1,0 +1,13 @@
+# Instructions to download Globus Connect Personal current as of
+# Monday August 9, 2021
+- name: Download Globus Connect Personal
+  get_url:
+    url: https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
+    dest: ~/Downloads
+
+- name: Unarchive Globus Connect Personal
+  unarchive:
+    src: ~/Downloads/globusconnectpersonal-latest.tgz
+    dest: ~/Software
+  tags: untar
+

@@ -30,4 +30,6 @@ apt_packages:
   - libtool-bin
   - ninja-build
   - pkg-config
+  - tk
+  - tcllib
   - unzip

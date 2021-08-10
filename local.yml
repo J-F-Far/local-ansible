@@ -19,5 +19,10 @@
 
     - include: tasks/packages.yml
       tags: ['packages']
+
     - include: tasks/docker.yml
       tags: [docker]
+
+    - include: tasks/globus.yml
+      tags: [globus]
+
